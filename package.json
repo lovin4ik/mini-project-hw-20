@@ -1,23 +1,27 @@
 {
-  "name": "mini-project-20",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
-    "@types/node": "^24.9.1",
-    "prettier": "^3.6.2",
-    "prettier-plugin-tailwindcss": "^0.7.1",
-    "typescript": "~5.9.3",
-    "vite": "^7.1.7"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.14",
-    "tailwindcss": "^4.1.14"
-  }
+	"name": "mini-project-20",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"homepage": "https://lovin4ik.github.io/mini-project-hw-20",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"preview": "vite preview",
+		"predeploy": "vite build",
+		"deploy": "gh-pages -d dist"
+	},
+	"devDependencies": {
+		"@trivago/prettier-plugin-sort-imports": "^5.2.2",
+		"@types/node": "^24.9.1",
+		"gh-pages": "^6.3.0",
+		"prettier": "^3.6.2",
+		"prettier-plugin-tailwindcss": "^0.7.1",
+		"typescript": "~5.9.3",
+		"vite": "^7.1.7"
+	},
+	"dependencies": {
+		"@tailwindcss/vite": "^4.1.14",
+		"tailwindcss": "^4.1.14"
+	}
 }

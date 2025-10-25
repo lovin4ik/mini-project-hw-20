@@ -5,6 +5,7 @@
       "name": "mini-project-20",
       "dependencies": {
         "@tailwindcss/vite": "^4.1.14",
+        "mini-project-20": ".",
         "tailwindcss": "^4.1.14",
       },
       "devDependencies": {
@@ -292,6 +293,8 @@
     "merge2": ["merge2@1.4.1", "", {}, "sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg=="],
 
     "micromatch": ["micromatch@4.0.8", "", { "dependencies": { "braces": "^3.0.3", "picomatch": "^2.3.1" } }, "sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA=="],
+
+    "mini-project-20": ["mini-project-20@file:", { "dependencies": { "@tailwindcss/vite": "^4.1.14", "tailwindcss": "^4.1.14" }, "devDependencies": { "@trivago/prettier-plugin-sort-imports": "^5.2.2", "@types/node": "^24.9.1", "gh-pages": "^6.3.0", "prettier": "^3.6.2", "prettier-plugin-tailwindcss": "^0.7.1", "typescript": "~5.9.3", "vite": "^7.1.7" } }],
 
     "minipass": ["minipass@7.1.2", "", {}, "sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw=="],
 

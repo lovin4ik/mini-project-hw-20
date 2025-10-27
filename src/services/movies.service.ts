@@ -1,3 +1,4 @@
+import type { IComment } from '@/types/comment.interface'
 import type { IMovie } from '@/types/movie.interface'
 
 class MoviesService {
@@ -54,10 +55,14 @@ class MoviesService {
 		return response
 	}
 
-	async createComment(movieId: string, commentText: string) {
+	async createComment(
+		movieId: string,
+		commentData: Omit<IComment, 'id' | 'createdAt'>
+	) {
 		const comment = {
 			id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-			text: commentText,
+			author: commentData.author,
+			text: commentData.text,
 			createdAt: new Date().toISOString()
 		}
 

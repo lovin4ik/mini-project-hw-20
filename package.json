@@ -8,7 +8,7 @@
 		"dev": "vite",
 		"build": "tsc && vite build --base=/mini-project-hw-20/",
 		"preview": "vite preview",
-		"predeploy": "vite build",
+		"predeploy": "tsc && vite build --base=/mini-project-hw-20/",
 		"deploy": "gh-pages -d dist"
 	},
 	"devDependencies": {

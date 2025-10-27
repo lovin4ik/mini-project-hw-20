@@ -26,7 +26,8 @@ export const mainLayout = async (): Promise<HTMLDivElement> => {
 			<button class="cursor-pointer bg-secondary/5 text-white py-2 px-4 rounded transition-colors duration-300 hover:bg-secondary/10" id="addMovieBtn">Add movie</button>
 		</div>
 		<div class="flex flex-col gap-3">
-			<div class="mt-4 container mx-auto" id="moviesContainer"></div>
+			<div class="mt-4" id="moviesInfoPage"></div>
+			<div class="mt-2 container mx-auto" id="moviesContainer"></div>
 			<div class="flex flex-row justify-center items-center gap-4 mb-4" id="paginationControls"></div>
 		</div>
 	`

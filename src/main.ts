@@ -23,6 +23,8 @@ mainLayout().then(html => {
 	const paginationControls = document.querySelector<HTMLDivElement>(
 		'#paginationControls'
 	)
+	const moviesInfoPage =
+		document.querySelector<HTMLDivElement>('#moviesInfoPage')
 
 	if (
 		!inputLimit ||
@@ -30,15 +32,24 @@ mainLayout().then(html => {
 		!fetchButton ||
 		!moviesContainer ||
 		!addMovieBtn ||
-		!paginationControls
+		!paginationControls ||
+		!moviesInfoPage
 	)
 		return Error('Some elements not found') as unknown as HTMLDivElement
 
 	inputPage.value = currentPage.toString()
 
 	async function renderMovies() {
-		if (!inputLimit || !inputPage || !moviesContainer || !paginationControls)
+		if (
+			!inputLimit ||
+			!inputPage ||
+			!moviesContainer ||
+			!paginationControls ||
+			!moviesInfoPage
+		)
 			return
+
+		currentPage = Number(inputPage.value)
 		const movies = await moviesService.getAllMovies(
 			`_per_page=${inputLimit!.value}&_page=${inputPage!.value}`
 		)
@@ -46,7 +57,11 @@ mainLayout().then(html => {
 			? movies
 			: (movies?.data ?? [])
 
-		moviesContainer!.innerHTML = movieList(moviesData)
+		moviesContainer.innerHTML = movieList(moviesData)
+
+		moviesInfoPage.innerHTML = `
+			<p class="text-center">Page ${currentPage} of ${movies.pages} | Total movies: ${movies.items}</p>
+		`
 
 		paginationControls.innerHTML = `
 			<button class="bg-secondary/5 text-white py-2 px-4 rounded cursor-pointer transition-colors duration-300 hover:bg-secondary/10" id="prevPageBtn">Previous</button>
@@ -325,6 +340,11 @@ mainLayout().then(html => {
 
 					<form id="createCommentForm" class="flex flex-col items-center justify-center w-96">
 						<div class="flex flex-col mb-2 w-full">
+							<label htmlFor="author">Author:</label>
+							<input type="text" id="author" name="author" class="w-full p-1 rounded bg-secondary/5 border border-secondary/20" />
+						</div>
+
+						<div class="flex flex-col mb-2 w-full">
 							<label htmlFor="text">Text:</label>
 							<input type="text" id="text" name="text" class="w-full p-1 rounded bg-secondary/5 border border-secondary/20" />
 						</div>
@@ -366,15 +386,12 @@ mainLayout().then(html => {
 				e.preventDefault()
 				const formData = new FormData(createCommentForm)
 				const newComment = {
-					text: formData.get('text') as string
+					text: formData.get('text') as string,
+					author: formData.get('author') as string
 				}
 
 				document.body.removeChild(backdropContainer)
-
-				const response = await moviesService.createComment(
-					index,
-					newComment.text
-				)
+				const response = await moviesService.createComment(index, newComment)
 
 				if (response) {
 					await renderMovies()
